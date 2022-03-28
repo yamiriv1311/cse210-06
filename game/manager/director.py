@@ -13,8 +13,6 @@ class Director():
 
     def start_game(self):
         self._scene_manager.prepare_scene(self._video_service,self._character_storage,self._script)
-        
-        #self._video_service = self._scene_manager.get_video_services()
 
         self._video_service.open_window()
         while self._video_service.is_playing():
