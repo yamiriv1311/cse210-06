@@ -67,8 +67,8 @@ class SceneManager():
     
     def __add_pacman(self, row, col, wall):
         if int(wall) == 2:            
-            pacman_char = PacMan(WALL_GROUP,PACMAN,int(col*CELL_SIZE),int(row*CELL_SIZE),FONT_SIZE,YELLOW)
-            self._char_storage.add_new_character(WALL_GROUP,pacman_char)
+            pacman_char = PacMan(PACMAN_GROUP,PACMAN,int(col*CELL_SIZE),int(row*CELL_SIZE),FONT_SIZE,YELLOW)
+            self._char_storage.add_new_character(PACMAN_GROUP,pacman_char)
 
 
     def __prepare_score(self):

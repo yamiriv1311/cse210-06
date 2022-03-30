@@ -17,11 +17,11 @@ LEVEL_FILE = "game/assets/data/level1.txt"
 #color
 BLUE = (0,0,139,250)
 WHITE = (255,255,255,250)
-YELLOW = (255,255,0)
+YELLOW = (255,255,0,250)
 #group Names
 WALL_GROUP = "wall"
 SCORE_GROUP = "score"
-
+PACMAN_GROUP = "pacman"
 #script actions
 OUTPUT = "output"
 INPUT = "input"
