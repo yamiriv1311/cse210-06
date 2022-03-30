@@ -2,6 +2,8 @@ from constants import *
 import csv
 from game.characters.wall import Wall
 from game.scripting.outputController import OutputController
+from game.scripting.inputController import InputController
+from game.scripting.updateController import UpdateController
 from game.characters.banner import Banner
 
 class SceneManager():
@@ -48,7 +50,10 @@ class SceneManager():
                     self.__add_walls(row,col,v)
     
     def __prepare_scripts(self):
+        self._scripts.add_action(INPUT,InputController())
+        self._scripts.add_action(UPDATE,UpdateController())
         self._scripts.add_action(OUTPUT,OutputController(self._video_services,self._char_storage))
+        
 
     def __add_walls(self,row,col,wall):
         

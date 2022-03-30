@@ -23,6 +23,8 @@ SCORE_GROUP = "score"
 
 #script actions
 OUTPUT = "output"
+INPUT = "input"
+UPDATE = "update"
 
 #texts
 SCORE_TEXT = "Player score:"
