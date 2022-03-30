@@ -5,7 +5,7 @@ import random
 
 class Character(Position,GameItem):
     """ 
-    this will create a character,it could be either a gem or a rock 
+    this will create a character,it could be either a pacman or a pahntom 
     Attributes:
        
         _appearance (str) : how the character will look like

@@ -1,6 +1,8 @@
+from hashlib import new
 from constants import *
 import csv
 from game.characters.wall import Wall
+from game.characters.pacman import PacMan
 from game.scripting.outputController import OutputController
 from game.scripting.inputController import InputController
 from game.scripting.updateController import UpdateController
@@ -48,6 +50,8 @@ class SceneManager():
             for row,val in enumerate(reader):
                 for col,v in enumerate(val):
                     self.__add_walls(row,col,v)
+                    self.__add_pacman(row,col,v)
+
     
     def __prepare_scripts(self):
         self._scripts.add_action(INPUT,InputController())
@@ -60,6 +64,12 @@ class SceneManager():
         if int(wall) == 1:            
             newWall = Wall(WALL_GROUP,"X",int(col*CELL_SIZE),int(row*CELL_SIZE),FONT_SIZE,BLUE)
             self._char_storage.add_new_character(WALL_GROUP,newWall)
+    
+    def __add_pacman(self, row, col, wall):
+        if int(wall) == 2:            
+            pacman_char = PacMan(WALL_GROUP,PACMAN,int(col*CELL_SIZE),int(row*CELL_SIZE),FONT_SIZE,YELLOW)
+            self._char_storage.add_new_character(WALL_GROUP,pacman_char)
+
 
     def __prepare_score(self):
         scoreBanner = Banner(0,0,20,WHITE,SCORE_GROUP)
