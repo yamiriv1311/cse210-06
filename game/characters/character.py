@@ -1,8 +1,9 @@
 from game.services.color import Color
 from game.services.position import Position
+from game.characters.game_item import GameItem
 import random
 
-class Character(Position):
+class Character(Position,GameItem):
     """ 
     this will create a character,it could be either a gem or a rock 
     Attributes:
@@ -17,7 +18,7 @@ class Character(Position):
     
     def __init__(self,appearance,x,y,fontSize,scale,color=""):
         self._appearance = appearance
-        self._position = Position.__init__(self,x,y,scale)
+        self._position = super().__init__(x,y,scale)
         self._font_size = fontSize
         self._color = color
         if color == "":

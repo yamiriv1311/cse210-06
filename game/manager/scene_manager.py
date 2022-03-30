@@ -2,7 +2,7 @@ from constants import *
 import csv
 from game.characters.wall import Wall
 from game.scripting.outputController import OutputController
-
+from game.characters.banner import Banner
 
 class SceneManager():
     def __init__(self):
@@ -35,6 +35,9 @@ class SceneManager():
         #preparation of scripts
         self.__prepare_scripts()
 
+        #prepare the score banner
+        self.__prepare_score()
+
 
     def __prepare_game_background(self):
         
@@ -43,6 +46,9 @@ class SceneManager():
             for row,val in enumerate(reader):
                 for col,v in enumerate(val):
                     self.__add_walls(row,col,v)
+    
+    def __prepare_scripts(self):
+        self._scripts.add_action(OUTPUT,OutputController(self._video_services,self._char_storage))
 
     def __add_walls(self,row,col,wall):
         
@@ -50,6 +56,10 @@ class SceneManager():
             newWall = Wall(WALL_GROUP,"X",int(col*CELL_SIZE),int(row*CELL_SIZE),FONT_SIZE,BLUE)
             self._char_storage.add_new_character(WALL_GROUP,newWall)
 
-        
-    def __prepare_scripts(self):
-        self._scripts.add_action(OUTPUT,OutputController(self._video_services,self._char_storage))
+    def __prepare_score(self):
+        scoreBanner = Banner(0,0,20,WHITE,SCORE_GROUP)
+        scoreBanner.set_text(SCORE_TEXT)
+        self.__add_new_score(scoreBanner)
+
+    def __add_new_score(self,scoreBanner):
+        self._char_storage.add_new_character(SCORE_GROUP,scoreBanner)

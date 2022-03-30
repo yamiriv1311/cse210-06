@@ -7,7 +7,7 @@ class Position:
         _scale (int) : the scale of the position
     Author:Karras
     """
-    def __init__(self,x,y,scale = 0):
+    def __init__(self,x,y,scale = 0, **kwargs):
       self._x = x
       self._y = y  
       self._scale = scale

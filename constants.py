@@ -16,9 +16,13 @@ LEVEL_FILE = "game/assets/data/level1.txt"
 
 #color
 BLUE = (0,0,139,250)
-
+WHITE = (255,255,255,250)
 #group Names
 WALL_GROUP = "wall"
+SCORE_GROUP = "score"
 
 #script actions
 OUTPUT = "output"
+
+#texts
+SCORE_TEXT = "Player score:"

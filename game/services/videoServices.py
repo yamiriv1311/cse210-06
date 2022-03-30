@@ -58,7 +58,7 @@ class VideoServices:
             pyray.draw_line(x, 0, x, self._height, pyray.GRAY)
     
     def draw_banner(self,banner):
-        pyray.draw_text(banner.get_message(),banner.get_x_position(),banner.get_y_position(),banner.get_font_size(),banner.get_color())
+        pyray.draw_text(banner.get_text(),banner.get_x_position(),banner.get_y_position(),banner.get_font_size(),banner.get_color())
 
     def draw_all_banners(self,characters):
         for banner in characters:
