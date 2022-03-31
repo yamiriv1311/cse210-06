@@ -27,4 +27,3 @@ class CharacterStorage:
         """
         if group in self._characters.keys():
             return self._characters[group]
-            
