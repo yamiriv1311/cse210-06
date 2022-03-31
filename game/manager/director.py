@@ -18,7 +18,7 @@ class Director():
         while self._video_service.is_playing():
             self._video_service.start_drawing()
             #self._script.get_actions(INPUT)[0].execute()
-            #self._script.get_actions(UPDATE)[0].execute()
+            self._script.get_actions(UPDATE)[0].execute()
             self._script.get_actions(OUTPUT)[0].execute()
             self._video_service.stop_drawing()
 

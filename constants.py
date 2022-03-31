@@ -22,6 +22,8 @@ YELLOW = (255,255,0,250)
 WALL_GROUP = "wall"
 SCORE_GROUP = "score"
 PACMAN_GROUP = "pacman"
+PHANTOM_GROUP = "phantom"
+
 #script actions
 OUTPUT = "output"
 INPUT = "input"
@@ -30,5 +32,7 @@ UPDATE = "update"
 #texts
 SCORE_TEXT = "Player score:"
 
-#pacman
+#characters
 PACMAN = "#$%"
+WALL = "x"
+PHANTOM = "M"

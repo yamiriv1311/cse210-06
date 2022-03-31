@@ -7,7 +7,7 @@ class Position:
         _scale (int) : the scale of the position
     Author:Karras
     """
-    def __init__(self,x,y,scale = 0, **kwargs):
+    def __init__(self,x,y,scale = 0):
       self._x = x
       self._y = y  
       self._scale = scale
@@ -38,12 +38,12 @@ class Position:
         """
         return Position(self._x,self._y)
 
-    def equals(self,charcterA,charcterB):
-        """ Compares positions between two characters
-            return: bool
-        """
-        if charcterA.get_x_position() == charcterB.get_x_position() and charcterA.get_y_position() == charcterB.get_y_position():
-            return True
+    # def equals(self,charcterA,charcterB):
+    #     """ Compares positions between two characters
+    #         return: bool
+    #     """
+    #     if charcterA.get_x_position() == charcterB.get_x_position() and charcterA.get_y_position() == charcterB.get_y_position():
+    #         return True
             
     def scale_x_position(self,xdirection):
         """ Scales the position according to the direcction 

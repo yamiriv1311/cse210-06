@@ -7,6 +7,7 @@ from game.scripting.outputController import OutputController
 from game.scripting.inputController import InputController
 from game.scripting.updateController import UpdateController
 from game.characters.banner import Banner
+from game.characters.phantom import Phantom
 
 class SceneManager():
     def __init__(self):
@@ -51,25 +52,30 @@ class SceneManager():
                 for col,v in enumerate(val):
                     self.__add_walls(row,col,v)
                     self.__add_pacman(row,col,v)
+                    self.__add_phantoms(row,col,v)
 
     
     def __prepare_scripts(self):
         self._scripts.add_action(INPUT,InputController())
-        self._scripts.add_action(UPDATE,UpdateController())
+        self._scripts.add_action(UPDATE,UpdateController(self._video_services,self._char_storage))
         self._scripts.add_action(OUTPUT,OutputController(self._video_services,self._char_storage))
         
 
-    def __add_walls(self,row,col,wall):
+    def __add_walls(self,row,col,item):
         
-        if int(wall) == 1:            
-            newWall = Wall(WALL_GROUP,"X",int(col*CELL_SIZE),int(row*CELL_SIZE),FONT_SIZE,BLUE)
-            self._char_storage.add_new_character(WALL_GROUP,newWall)
+        if int(item) == 1:            
+            newWall = Wall(WALL_GROUP,WALL,int(col*CELL_SIZE),int(row*CELL_SIZE),FONT_SIZE,BLUE)
+            self.__add_to_char_storage(WALL_GROUP,newWall)
     
-    def __add_pacman(self, row, col, wall):
-        if int(wall) == 2:            
+    def __add_pacman(self, row, col, item):
+        if int(item) == 2:            
             pacman_char = PacMan(PACMAN_GROUP,PACMAN,int(col*CELL_SIZE),int(row*CELL_SIZE),FONT_SIZE,YELLOW)
-            self._char_storage.add_new_character(PACMAN_GROUP,pacman_char)
+            self.__add_to_char_storage(PACMAN_GROUP,pacman_char)
 
+    def __add_phantoms(self,row,col,item):
+        if int(item) == 3:
+            phantom = Phantom(PHANTOM_GROUP,PHANTOM,int(col*CELL_SIZE),int(row*CELL_SIZE),FONT_SIZE)
+            self.__add_to_char_storage(PHANTOM_GROUP,phantom)
 
     def __prepare_score(self):
         scoreBanner = Banner(0,0,20,WHITE,SCORE_GROUP)
@@ -78,3 +84,6 @@ class SceneManager():
 
     def __add_new_score(self,scoreBanner):
         self._char_storage.add_new_character(SCORE_GROUP,scoreBanner)
+
+    def __add_to_char_storage(self,groupName,character):
+        self._char_storage.add_new_character(groupName,character)
