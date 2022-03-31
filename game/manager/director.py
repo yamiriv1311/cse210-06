@@ -1,11 +1,12 @@
 from constants import *
+from game.characters.pacman import PacMan
 from game.manager.scene_manager import SceneManager
 from game.characters.charaterStorage import CharacterStorage
 from game.scripting.script import Script
 from game.services.videoServices import VideoServices
 
 class Director():
-    def __init__(self):
+    def __init__(self, keyboard_service):
         self._scene_manager = SceneManager()
         self._video_service = VideoServices(WIDTH,HEIGHT,GAME_NAME,FRAMES,CELL_SIZE)
         self._character_storage = CharacterStorage()
@@ -21,6 +22,5 @@ class Director():
             #self._script.get_actions(UPDATE)[0].execute()
             self._script.get_actions(OUTPUT)[0].execute()
             self._video_service.stop_drawing()
-
         self._video_service.close_window()
     
