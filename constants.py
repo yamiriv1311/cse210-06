@@ -31,4 +31,4 @@ UPDATE = "update"
 SCORE_TEXT = "Player score:"
 
 #pacman
-PACMAN = "#$%"
+PACMAN = {"#$%"}
