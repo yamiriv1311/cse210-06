@@ -8,9 +8,10 @@ class UpdateController(Action):
         self._video_services = videoServices
         self._char_storage = charStorage
     
-    def execute(self):
+    def execute(self,isplaying):
 
         #-----------------Phantoms behavior----------------------#
-        phantoms = self._char_storage.get_character(PHANTOM_GROUP)
-        phantomsAction = PhantomsAction(phantoms,self._char_storage)
-        phantomsAction.execute()
+        if isplaying:
+            phantoms = self._char_storage.get_character(PHANTOM_GROUP)
+            phantomsAction = PhantomsAction(phantoms,self._char_storage)
+            phantomsAction.execute()

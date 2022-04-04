@@ -15,6 +15,7 @@ class SceneManager():
         self._video_services = ""
         self._char_storage = ""
         self._scripts = ""
+        self._is_playing = False
 
     def set_video_services(self,video):
         self._video_services = video
@@ -26,6 +27,7 @@ class SceneManager():
         self._scripts = scripts
 
     def prepare_scene(self,video,storage,scripts):
+        
         #Vide service
         self.set_video_services(video)
 
@@ -41,14 +43,19 @@ class SceneManager():
         #preparation of scripts
         self.__prepare_scripts()
 
+        #prepare start game menu
+        self.__prepare_start_game_menu()
+
+        #set the state of the game
+        self.set_game_state()
+
+    def __prepare_game_background(self):
         #prepare the score banner
         self.__prepare_score()
 
         #prepare life
         self.__prepare_lives()
 
-    def __prepare_game_background(self):
-        
         with open(LEVEL_FILE,'r') as file:
             reader = csv.reader(file)
             for row,val in enumerate(reader):
@@ -105,3 +112,20 @@ class SceneManager():
 
     def __add_new_lives(self,livesBanner):
         self._char_storage.add_new_character(LIFE_GROUP,livesBanner)
+    
+    def __prepare_start_game_menu(self):
+        startBanner = Banner(int((WIDTH/2) - (WIDTH/3)) - (CELL_SIZE *3) ,int(HEIGHT/3),FONT_SIZE,WHITE,START_GROUP)
+        instructionBanner = Banner(int((WIDTH/2) - (WIDTH/3)) ,int(HEIGHT/3) + CELL_SIZE,FONT_SIZE,WHITE,START_GROUP)
+        startBanner.set_text(START_TEXT)
+        instructionBanner.set_text(INSTRUCTION_TEXT)
+        self.__add_start_banner(instructionBanner)
+        self.__add_start_banner(startBanner)
+    
+    def __add_start_banner(self,startBanner):
+        self._char_storage.add_new_character(START_GROUP,startBanner)
+    
+    def set_game_state(self):
+        state = self._scripts.get_actions(INPUT)[0]
+        print(state.get_game_state())
+        self._is_playing = state.get_game_state()
+    

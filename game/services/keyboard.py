@@ -27,3 +27,6 @@ class KeyboardService():
     direction = Position(dx, dy)
         
     return direction
+
+  def get_key_pressed(self):
+    return pyray.get_key_pressed()

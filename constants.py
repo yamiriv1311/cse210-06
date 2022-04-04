@@ -30,6 +30,7 @@ PACMAN_GROUP = "pacman"
 PHANTOM_GROUP = "phantom"
 COIN_GROUP = "coin"
 LIFE_GROUP = "life"
+START_GROUP = "start"
 
 #script actions
 OUTPUT = "output"
@@ -39,6 +40,8 @@ UPDATE = "update"
 #texts
 SCORE_TEXT = "Player score:"
 LIFE_TEXT = "Life:"
+START_TEXT = "Ready to play pakman?!! press enter and have fun."
+INSTRUCTION_TEXT = "Remeber to get as much coins as possible"
 
 #characters
 PACMAN = "#$%"
