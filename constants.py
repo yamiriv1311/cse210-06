@@ -28,6 +28,7 @@ WALL_GROUP = "wall"
 SCORE_GROUP = "score"
 PACMAN_GROUP = "pacman"
 PHANTOM_GROUP = "phantom"
+COIN_GROUP = "coin"
 
 #script actions
 OUTPUT = "output"
@@ -41,3 +42,4 @@ SCORE_TEXT = "Player score:"
 PACMAN = "#$%"
 WALL = "X"
 PHANTOM = "M"
+COIN = "*"

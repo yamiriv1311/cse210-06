@@ -8,6 +8,7 @@ from game.scripting.inputController import InputController
 from game.scripting.updateController import UpdateController
 from game.characters.banner import Banner
 from game.characters.phantom import Phantom
+from game.characters.coin import Coin
 
 class SceneManager():
     def __init__(self):
@@ -53,6 +54,7 @@ class SceneManager():
                     self.__add_walls(row,col,v)
                     self.__add_pacman(row,col,v)
                     self.__add_phantoms(row,col,v)
+                    self.__add_coins(row,col,v)
 
     
     def __prepare_scripts(self):
@@ -87,3 +89,8 @@ class SceneManager():
 
     def __add_to_char_storage(self,groupName,character):
         self._char_storage.add_new_character(groupName,character)
+    
+    def __add_coins(self,row,col,item):
+        if int(item) == 4:
+            coin = Coin(COIN_GROUP,COIN,int(col*CELL_SIZE),int(row*CELL_SIZE),FONT_SIZE,WHITE)
+            self.__add_to_char_storage(COIN_GROUP,coin)
