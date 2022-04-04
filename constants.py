@@ -41,4 +41,3 @@ SCORE_TEXT = "Player score:"
 PACMAN = "#$%"
 WALL = "X"
 PHANTOM = "M"
-
