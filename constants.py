@@ -3,12 +3,17 @@
 WIDTH = 600
 HEIGHT = 600
 GAME_NAME = "Pacman"
-FRAMES = 12
+FRAMES = 20
 CELL_SIZE = 20
 COLS = 30
 ROWS = 30
 FONT_SIZE = 20
-
+X_POSITION = "x"
+Y_POSITION = "y"
+X_POSITIVE = "+x" 
+Y_POSITIVE = "+y"
+Y_NEGATIVE = "-y"
+X_NEGATIVE = "-x"
 
 #Level file
 #LEVEL_FILE = "assets/data/level{:1}" temporally commented for development purposes
@@ -34,5 +39,6 @@ SCORE_TEXT = "Player score:"
 
 #characters
 PACMAN = "#$%"
-WALL = "x"
+WALL = "X"
 PHANTOM = "M"
+

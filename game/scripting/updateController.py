@@ -10,7 +10,7 @@ class UpdateController(Action):
     
     def execute(self):
 
-        #Phantoms behavior
+        #-----------------Phantoms behavior----------------------#
         phantoms = self._char_storage.get_character(PHANTOM_GROUP)
         phantomsAction = PhantomsAction(phantoms,self._char_storage)
         phantomsAction.execute()
