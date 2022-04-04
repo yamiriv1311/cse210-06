@@ -29,6 +29,7 @@ SCORE_GROUP = "score"
 PACMAN_GROUP = "pacman"
 PHANTOM_GROUP = "phantom"
 COIN_GROUP = "coin"
+LIFE_GROUP = "life"
 
 #script actions
 OUTPUT = "output"
@@ -37,9 +38,13 @@ UPDATE = "update"
 
 #texts
 SCORE_TEXT = "Player score:"
+LIFE_TEXT = "Life:"
 
 #characters
 PACMAN = "#$%"
 WALL = "X"
 PHANTOM = "M"
 COIN = "*"
+#coin
+COIN_VALUE = 10
+LIVES_NUM = 3

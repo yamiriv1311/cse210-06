@@ -44,6 +44,8 @@ class SceneManager():
         #prepare the score banner
         self.__prepare_score()
 
+        #prepare life
+        self.__prepare_lives()
 
     def __prepare_game_background(self):
         
@@ -80,7 +82,7 @@ class SceneManager():
             self.__add_to_char_storage(PHANTOM_GROUP,phantom)
 
     def __prepare_score(self):
-        scoreBanner = Banner(0,0,20,WHITE,SCORE_GROUP)
+        scoreBanner = Banner(0,0,FONT_SIZE,WHITE,SCORE_GROUP)
         scoreBanner.set_text(SCORE_TEXT)
         self.__add_new_score(scoreBanner)
 
@@ -93,4 +95,13 @@ class SceneManager():
     def __add_coins(self,row,col,item):
         if int(item) == 4:
             coin = Coin(COIN_GROUP,COIN,int(col*CELL_SIZE),int(row*CELL_SIZE),FONT_SIZE,WHITE)
+            coin.set_coin_value = COIN_VALUE
             self.__add_to_char_storage(COIN_GROUP,coin)
+
+    def __prepare_lives(self):
+        lifeBanner = Banner(int((WIDTH/2) + (WIDTH/4)) ,0,FONT_SIZE,WHITE,LIFE_GROUP)
+        lifeBanner.set_text(LIFE_TEXT+" "+str(LIVES_NUM))
+        self.__add_new_lives(lifeBanner)
+
+    def __add_new_lives(self,livesBanner):
+        self._char_storage.add_new_character(LIFE_GROUP,livesBanner)

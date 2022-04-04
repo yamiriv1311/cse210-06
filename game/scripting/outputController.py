@@ -14,4 +14,5 @@ class OutputController(Action):
         
         self._video_services.draw_character(self._char_storage.get_character(PACMAN_GROUP)[0])
         self._video_services.draw_banner(self._char_storage.get_character(SCORE_GROUP)[0])
+        self._video_services.draw_banner(self._char_storage.get_character(LIFE_GROUP)[0])
         
