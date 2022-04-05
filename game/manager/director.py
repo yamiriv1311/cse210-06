@@ -1,5 +1,5 @@
-from asyncio import constants
-from tkinter.tix import CELL
+""" from asyncio import constants
+from tkinter.tix import CELL """
 from constants import *
 from game.manager.scene_manager import SceneManager
 from game.characters.charaterStorage import CharacterStorage
@@ -14,18 +14,28 @@ class Director:
         self._video_service = VideoServices(WIDTH,HEIGHT,GAME_NAME,FRAMES,CELL_SIZE)
         self._character_storage = CharacterStorage()
         self._script = Script()
+        self._is_playing = False
 
     def start_game(self):
         self._scene_manager.prepare_scene(self._video_service,self._character_storage,self._script, self._keyboard_service)
+        input = self._script.get_actions(INPUT)
+        update = self._script.get_actions(UPDATE)
+        output = self._script.get_actions(OUTPUT)
 
         self._video_service.open_window()
         while self._video_service.is_playing():
+
             self._video_service.start_drawing()
-            self._script.get_actions(INPUT)[0].execute()
-            #self._script.get_actions(UPDATE)[0].execute()
-            self._script.get_actions(OUTPUT)[0].execute()
+            self._execute_actions(input,self._is_playing)
+            self._execute_actions(update,self._is_playing)
+            self._execute_actions(output,self._is_playing)
+            self.__set_game_state(input)
             self._video_service.stop_drawing()
         self._video_service.close_window()
     
-
+    def _execute_actions(self,actions,isplaying):  
+        for action in actions:
+            action.execute(isplaying) 
    
+    def __set_game_state(self,arg):
+        self._is_playing = arg[0].get_game_state()
