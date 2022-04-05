@@ -49,6 +49,9 @@ class SceneManager():
         #set the state of the game
         self.set_game_state()
 
+        #prepare game over view
+        self.__prepare_game_over()
+
     def __prepare_game_background(self):
         #prepare the score banner
         self.__prepare_score()
@@ -129,3 +132,7 @@ class SceneManager():
         print(state.get_game_state())
         self._is_playing = state.get_game_state()
     
+    def __prepare_game_over(self):
+        banner = Banner(int((WIDTH/2) - (WIDTH/3)) - (CELL_SIZE *3) ,int(HEIGHT/3),FONT_SIZE,WHITE,GAME_OVER_GROUP)
+        banner.set_text(GAME_OVER_TEXT)
+        self.__add_start_banner(banner)

@@ -31,7 +31,7 @@ PHANTOM_GROUP = "phantom"
 COIN_GROUP = "coin"
 LIFE_GROUP = "life"
 START_GROUP = "start"
-
+GAME_OVER_GROUP = "over"
 #script actions
 OUTPUT = "output"
 INPUT = "input"
@@ -42,12 +42,15 @@ SCORE_TEXT = "Player score:"
 LIFE_TEXT = "Life:"
 START_TEXT = "Ready to play pakman?!! press enter and have fun."
 INSTRUCTION_TEXT = "Remeber to get as much coins as possible"
+GAME_OVER_TEXT = "Game over!! to try again press enter"
 
 #characters
-PACMAN = "#$%"
-WALL = "X"
-PHANTOM = "M"
-COIN = "*"
+#PACMAN = "#$%"
+PACMAN = "#0%"
+WALL = "#X%"
+#WALL = "X>"
+PHANTOM = "-0m-"
+COIN = "°"
 #coin
 COIN_VALUE = 10
 LIVES_NUM = 3
