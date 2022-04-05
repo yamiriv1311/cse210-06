@@ -8,8 +8,7 @@ from game.services.position import Position
 
 def main():
 
-  keyboard_service = KeyboardService
-  director = Director(keyboard_service)
+  director = Director()
   director.start_game()
 
 

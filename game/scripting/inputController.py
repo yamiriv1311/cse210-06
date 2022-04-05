@@ -7,13 +7,13 @@ from game.scripting.pacmanMovement import pacmanMovement
 
 class InputController(Action):
     """ all the behaviors related to the input of a player are managed here """
-    def __init__(self):
+    def __init__(self, storage):
         self._keyboard_service = KeyboardService()
-        self._char_storage = CharacterStorage()
+        self._char_storage = storage
         
         
     def execute(self):
-        pacman = CharacterStorage.get_character(PACMAN, PACMAN_GROUP)
+        pacman = pacmanMovement()
         velocity = self._keyboard_service.get_direction()
         pacman.set_velocity(velocity) 
         

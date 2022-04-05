@@ -1,4 +1,6 @@
 from hashlib import new
+
+from pyray import KEY_Y
 from constants import *
 import csv
 from game.characters.wall import Wall
@@ -8,11 +10,13 @@ from game.scripting.inputController import InputController
 from game.scripting.updateController import UpdateController
 from game.characters.banner import Banner
 
+
 class SceneManager():
     def __init__(self):
         self._video_services = ""
         self._char_storage = ""
         self._scripts = ""
+        self._keyboard_service = ""
 
     def set_video_services(self,video):
         self._video_services = video
@@ -23,7 +27,10 @@ class SceneManager():
     def set_scripts(self,scripts):
         self._scripts = scripts
 
-    def prepare_scene(self,video,storage,scripts):
+    def set_keyboard_services(self, keyboard):
+        self._keyboard_service = keyboard
+
+    def prepare_scene(self,video,storage,scripts, keyboard):
         #Vide service
         self.set_video_services(video)
 
@@ -42,6 +49,9 @@ class SceneManager():
         #prepare the score banner
         self.__prepare_score()
 
+        #Keyboard services
+        self.set_keyboard_services(keyboard)
+
 
     def __prepare_game_background(self):
         
@@ -54,7 +64,7 @@ class SceneManager():
 
     
     def __prepare_scripts(self):
-        self._scripts.add_action(INPUT,InputController())
+        self._scripts.add_action(INPUT,InputController(self._keyboard_service,self._char_storage))
         self._scripts.add_action(UPDATE,UpdateController())
         self._scripts.add_action(OUTPUT,OutputController(self._video_services,self._char_storage))
         
