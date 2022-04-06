@@ -10,20 +10,22 @@ class PhantomsMovement(Movement):
         phantomsDirection = phantom.get_direction()
         direction = self.check_direction(phantomsDirection)
         calculation = 0
-        
+        x = phantom.get_x_position()
+        y = phantom.get_y_position()
+
         if direction == X_POSITION:
             if phantomsDirection == X_POSITIVE:
-                calculation = int(((phantom.get_x_position() + 1)) % WIDTH)
+                calculation = int(((x + 10)) % WIDTH)
             else:
-                calculation = int(((phantom.get_x_position() - 1)) % WIDTH)
+                calculation = int(((x - 10)) % WIDTH)
 
             self.__set_new_position(phantom,direction,calculation)
 
         else:
             if phantomsDirection == Y_POSITIVE:
-                calculation = int(((phantom.get_y_position() + 1)) % HEIGHT)
+                calculation = int(((y + 10)) % HEIGHT)
             else:
-                calculation = int(((phantom.get_y_position() - 1)) % HEIGHT)
+                calculation = int(((y - 10)) % HEIGHT)
                 
             self.__set_new_position(phantom,direction,calculation)
 

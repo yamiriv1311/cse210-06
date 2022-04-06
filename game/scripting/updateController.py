@@ -1,6 +1,7 @@
 from game.scripting.action import Action
 from constants import *
 from game.scripting.phantomsAction import PhantomsAction
+from game.scripting.pacmansAction import PacmansAction
 
 class UpdateController(Action):
     """ All the behaviors related with the update of inputs etc are managed here """
@@ -13,5 +14,9 @@ class UpdateController(Action):
         #-----------------Phantoms behavior----------------------#
         if isplaying:
             phantoms = self._char_storage.get_character(PHANTOM_GROUP)
+            pacman = self._char_storage.get_character(PACMAN_GROUP)[0]
+
             phantomsAction = PhantomsAction(phantoms,self._char_storage)
+            pacmansAction = PacmansAction(pacman,self._char_storage)
+            pacmansAction.execute()
             phantomsAction.execute()

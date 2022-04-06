@@ -7,9 +7,8 @@ from game.scripting.script import Script
 from game.services.videoServices import VideoServices
 
 class Director:
-    def __init__(self, keyboard_service):
+    def __init__(self):
         self._scene_manager = SceneManager()
-        self._keyboard_service = keyboard_service
         self._video_service = VideoServices(WIDTH,HEIGHT,GAME_NAME,FRAMES,CELL_SIZE)
         self._character_storage = CharacterStorage()
         self._script = Script()

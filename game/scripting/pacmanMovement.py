@@ -1,99 +1,43 @@
-from game.services.color import Color
-from game.services.position import Position
-from constants import PACMAN
+from constants import *
 
-class pacmanMovement:
-  def __init__(self):
-    self._text = ""
-    self._font_size = 15
-    self._color = Color(255, 255, 255)
-    self._position = Position(0, 0)
-    self._velocity = Position(0, 0)
+class PacmanMovement:
+    def __init__(self):
+      pass
+    
+    def movement(self,pacman):
+        direction = self.check_direction(pacman.get_direction())
+        positionValue = self.calculate_new_position(pacman,direction)
+        self.__set_new_position(pacman,direction,positionValue)
 
+    def check_direction(self,direction):
+        response = ""
+        if direction == X_NEGATIVE or direction == X_POSITIVE:
+            response = X_POSITION
+        elif direction == Y_NEGATIVE or direction == Y_POSITIVE:
+            response = Y_POSITION
+        return response
 
-  def get_color(self):
-    """Gets the actor's color as a tuple of three ints (r, g, b).
-        Returns:
-        Color: The actor's text color.
-    """
-    return self._color
+    def calculate_new_position(self,pacman,direction):
+        pacmansDirection = pacman.get_direction()
+        x = pacman.get_x_position()
+        y = pacman.get_y_position()
 
-  def get_font_size(self):
-    """Gets the actor's font size.
-      Returns:
-      Point: The actor's font size.
-    """
-    return self._font_size
+        if direction == X_POSITION:
+            if pacmansDirection == X_POSITIVE:
+                calculation = int(((x + 20)) % WIDTH)
+            else:
+                calculation = int(((x - 20)) % WIDTH)
 
-  def get_position(self):
-    """Gets the actor's position in 2d space.
-      Returns:
-          Point: The actor's position in 2d space.
-    """
-    return self._position
-  
-  def get_text(self):
-        """Gets the actor's textual representation.
+        else:
+            if pacmansDirection == Y_POSITIVE:
+                calculation = int(((y + 20)) % HEIGHT)
+            else:
+                calculation = int(((y - 20)) % HEIGHT)
         
-        Returns:
-            string: The actor's textual representation.
-        """
-        return self._text
+        return calculation
 
-  def get_velocity(self):
-    """Gets the actor's speed and direction.
-    Returns:
-      Point: The actor's speed and direction.
-    """
-    return self._velocity
-  
-  def move_next(self, max_x, max_y):
-    """Moves the actor to its next position according to its velocity. Will wrap the position 
-    from one side of the screen to the other when it reaches the given maximum x and y values.
-        
-    Args:
-      max_x (int): The maximum x value.
-      max_y (int): The maximum y value.
-    """
-    x = (self._position.get_x() + self._velocity.get_x()) % max_x
-    y = (self._position.get_y() + self._velocity.get_y()) % max_y
-    self._position = Position(x, y)
-
-
-  def set_color(self, color):
-        """Updates the color to the given one.
-        
-        Args:
-            color (Color): The given color.
-        """
-        self._color = color
-
-
-  def set_position(self, position):
-    """Updates the position to the given one.
-        Args:
-          position (Point): The given position.
-    """
-    self._position = position
-  
-  def set_font_size(self, font_size):
-    """Updates the font size to the given one.
-        Args:
-        font_size (int): The given font size.
-    """
-    self._font_size = font_size
-
-  def set_text(self, text):
-        """Updates the text to the given value.
-        
-        Args:
-            text (string): The given value.
-        """
-        self._text = text
-
-  def set_velocity(self, velocity):
-    """Updates the velocity to the given one.
-        Args:
-          velocity (Point): The given velocity.
-    """
-    self._velocity = velocity
+    def __set_new_position(self,pacman,direction,positionValue):
+        if direction == X_POSITION:
+            pacman.set_x_position(positionValue)
+        elif direction == Y_POSITION:
+            pacman.set_y_position(positionValue)

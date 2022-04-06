@@ -1,30 +1,24 @@
 import pyray
 from constants import CELL_SIZE
 from game.services.position import Position
-
+from constants import *
 
 class KeyboardService():
   """Detects player input."""
-
   
-
   def get_direction(self):
-    dx = 0
-    dy = 0
-
+    direction = ""
     if pyray.is_key_down(pyray.KEY_LEFT):
-      dx = -1
+      direction = X_NEGATIVE
         
     if pyray.is_key_down(pyray.KEY_RIGHT):
-      dx = 1
+      direction = X_POSITIVE
         
     if pyray.is_key_down(pyray.KEY_UP):
-      dy = -1
+      direction = Y_NEGATIVE
         
     if pyray.is_key_down(pyray.KEY_DOWN):
-      dy = 1
-
-    direction = Position(dx, dy)
+      direction = Y_POSITIVE
         
     return direction
 

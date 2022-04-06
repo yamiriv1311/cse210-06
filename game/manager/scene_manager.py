@@ -1,4 +1,3 @@
-from hashlib import new
 from constants import *
 import csv
 from game.characters.wall import Wall
@@ -70,7 +69,7 @@ class SceneManager():
 
     
     def __prepare_scripts(self):
-        self._scripts.add_action(INPUT,InputController())
+        self._scripts.add_action(INPUT,InputController(self._char_storage))
         self._scripts.add_action(UPDATE,UpdateController(self._video_services,self._char_storage))
         self._scripts.add_action(OUTPUT,OutputController(self._video_services,self._char_storage))
         
@@ -129,7 +128,6 @@ class SceneManager():
     
     def set_game_state(self):
         state = self._scripts.get_actions(INPUT)[0]
-        print(state.get_game_state())
         self._is_playing = state.get_game_state()
     
     def __prepare_game_over(self):
