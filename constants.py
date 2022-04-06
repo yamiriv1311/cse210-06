@@ -25,13 +25,14 @@ WHITE = (255,255,255,250)
 YELLOW = (255,255,0,250)
 #group Names
 WALL_GROUP = "wall"
-SCORE_GROUP = "score"
+SCORE_BANNER_GROUP = "scoreBanner"
 PACMAN_GROUP = "pacman"
 PHANTOM_GROUP = "phantom"
 COIN_GROUP = "coin"
 LIFE_GROUP = "life"
 START_GROUP = "start"
 GAME_OVER_GROUP = "over"
+SCORE_GROUP = "score"
 #script actions
 OUTPUT = "output"
 INPUT = "input"

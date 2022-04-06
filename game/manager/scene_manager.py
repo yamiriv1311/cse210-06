@@ -8,6 +8,7 @@ from game.scripting.updateController import UpdateController
 from game.characters.banner import Banner
 from game.characters.phantom import Phantom
 from game.characters.coin import Coin
+from game.characters.score import Score
 
 class SceneManager():
     def __init__(self):
@@ -53,10 +54,13 @@ class SceneManager():
 
     def __prepare_game_background(self):
         #prepare the score banner
-        self.__prepare_score()
+        self.__prepare_score_banner()
 
         #prepare life
         self.__prepare_lives()
+
+        #prepare score
+        self.__prepare_score()
 
         with open(LEVEL_FILE,'r') as file:
             reader = csv.reader(file)
@@ -90,13 +94,13 @@ class SceneManager():
             phantom = Phantom(PHANTOM_GROUP,PHANTOM,int(col*CELL_SIZE),int(row*CELL_SIZE),FONT_SIZE)
             self.__add_to_char_storage(PHANTOM_GROUP,phantom)
 
-    def __prepare_score(self):
-        scoreBanner = Banner(0,0,FONT_SIZE,WHITE,SCORE_GROUP)
+    def __prepare_score_banner(self):
+        scoreBanner = Banner(0,0,FONT_SIZE,WHITE,SCORE_BANNER_GROUP)
         scoreBanner.set_text(SCORE_TEXT)
-        self.__add_new_score(scoreBanner)
+        self.__add_new_score_banner(scoreBanner)
 
-    def __add_new_score(self,scoreBanner):
-        self._char_storage.add_new_character(SCORE_GROUP,scoreBanner)
+    def __add_new_score_banner(self,scoreBanner):
+        self._char_storage.add_new_character(SCORE_BANNER_GROUP,scoreBanner)
 
     def __add_to_char_storage(self,groupName,character):
         self._char_storage.add_new_character(groupName,character)
@@ -104,7 +108,7 @@ class SceneManager():
     def __add_coins(self,row,col,item):
         if int(item) == 4:
             coin = Coin(COIN_GROUP,COIN,int(col*CELL_SIZE),int(row*CELL_SIZE),FONT_SIZE,WHITE)
-            coin.set_coin_value = COIN_VALUE
+            coin.set_coin_value(COIN_VALUE)
             self.__add_to_char_storage(COIN_GROUP,coin)
 
     def __prepare_lives(self):
@@ -134,3 +138,7 @@ class SceneManager():
         banner = Banner(int((WIDTH/2) - (WIDTH/3)) - (CELL_SIZE *3) ,int(HEIGHT/3),FONT_SIZE,WHITE,GAME_OVER_GROUP)
         banner.set_text(GAME_OVER_TEXT)
         self.__add_start_banner(banner)
+
+    def __prepare_score(self):
+        score = Score(0,SCORE_GROUP)
+        self._char_storage.add_new_character(SCORE_GROUP,score)

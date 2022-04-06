@@ -11,12 +11,13 @@ class UpdateController(Action):
     
     def execute(self,isplaying):
 
-        #-----------------Phantoms behavior----------------------#
+        #-----------------Phantoms and Pacman behavior----------------------#
         if isplaying:
             phantoms = self._char_storage.get_character(PHANTOM_GROUP)
             pacman = self._char_storage.get_character(PACMAN_GROUP)[0]
+            score = self._char_storage.get_character(SCORE_GROUP)[0]
 
             phantomsAction = PhantomsAction(phantoms,self._char_storage)
-            pacmansAction = PacmansAction(pacman,self._char_storage)
+            pacmansAction = PacmansAction(pacman,self._char_storage,score)
             pacmansAction.execute()
             phantomsAction.execute()

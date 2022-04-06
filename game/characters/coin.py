@@ -7,8 +7,9 @@ class Coin(Character):
         self._direction = ""
         self._value = 0
 
-    def passing_over_item(self, over=False):
-        return super().passing_over_item(over)
+    def passing_over_item(self, coinStorage,index):
+        coinStorage.pop(index)
+        return self._value
     
     def get_group_name(self):
         return self._group_name
