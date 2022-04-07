@@ -6,15 +6,6 @@ Pakman is a game based in the famus old game pacman. The player needs to collect
 
 # Rules
 There's only one rule, DO NOT Touch the phantoms.. Good luck !!
-# Requirements
-The program must also meet the following requirements.
-
-The program must include a README file.
-The program must include class and method comments.
-The program must have at least 16 classes.
-The program must remain true to game play described in the overview.
-To run the project
-Go to the __main__.py file and execute the following command: python3 __main_.py
 
 ## Getting Started
 ---
