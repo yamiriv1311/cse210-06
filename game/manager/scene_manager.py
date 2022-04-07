@@ -11,11 +11,13 @@ from game.characters.coin import Coin
 from game.characters.score import Score
 from game.characters.life import Life
 
+
 class SceneManager():
     def __init__(self):
         self._video_services = ""
         self._char_storage = ""
         self._scripts = ""
+        self._keyboard_service = ""
         self._is_playing = False
 
     def set_video_services(self,video):
@@ -26,6 +28,9 @@ class SceneManager():
 
     def set_scripts(self,scripts):
         self._scripts = scripts
+
+    def set_keyboard_services(self, keyboard):
+        self._keyboard_service = keyboard
 
     def prepare_scene(self,video,storage,scripts):
         
@@ -59,6 +64,9 @@ class SceneManager():
     def __prepare_game_background(self):
         #prepare the score banner
         self.__prepare_score_banner()
+
+        #Keyboard services
+        self.set_keyboard_services(self._keyboard_service)
 
         #prepare life
         self.__prepare_lives_banner()

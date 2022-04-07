@@ -5,9 +5,9 @@ from game.services.keyboard import KeyboardService
 
 class InputController(Action):
     """ all the behaviors related to the input of a player are managed here """
-    def __init__(self,charStorage):
+    def __init__(self, storage):
         self._keyboard_service = KeyboardService()
-        self._char_storage = charStorage
+        self._char_storage = storage
         self._is_playing = False
         
     def execute(self,isPlaying,isGameOver=False):
