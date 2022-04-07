@@ -20,6 +20,7 @@ class UpdateController(Action):
             pacman = self._char_storage.get_character(PACMAN_GROUP)[0]
             score = self._char_storage.get_character(SCORE_GROUP)[0]
             life = self._char_storage.get_character(LIFE_GROUP)[0]
+            coins = self._char_storage.get_character(COIN_GROUP)
             
             phantomsAction = PhantomsAction(phantoms,self._char_storage)
                 
@@ -28,6 +29,10 @@ class UpdateController(Action):
             phantomsAction.execute()
             if life.get_life_number() < 1:
                 return GAME_OVER
+            
+            #if int(len(coins)*COIN_VALUE) == score.get_score():
+            if 40 == score.get_score():
+                return WINNER
     
     def get_game_state(self):
         return self._is_playing

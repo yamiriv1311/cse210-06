@@ -53,6 +53,9 @@ class SceneManager():
         #prepare game over view
         self.__prepare_game_over()
 
+        #prepare win banner
+        self.__prepare_win_banner()
+
     def __prepare_game_background(self):
         #prepare the score banner
         self.__prepare_score_banner()
@@ -150,3 +153,9 @@ class SceneManager():
     def __prepare_lives(self):
         life = Life(LIFE_NUMBER,LIFE_GROUP)
         self._char_storage.add_new_character(LIFE_GROUP,life)
+        life = self._char_storage.get_character(LIFE_GROUP)
+
+    def __prepare_win_banner(self):
+        banner = Banner(int((WIDTH/2) - (WIDTH/3)) - (CELL_SIZE *3) ,int(HEIGHT/3),35,WHITE,WIN_GROUP)    
+        banner.set_text(WIN_TEXT)
+        self._char_storage.add_new_character(WIN_GROUP,banner)

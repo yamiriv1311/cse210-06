@@ -51,6 +51,11 @@ class Director:
                 self._is_playing = True
                 self._is_game_over = False
                 self.prepare_scenario()
+                
+
+            if response == WINNER:
+                self._is_game_over = True
+                self._is_playing = True
 
     def prepare_scenario(self):
         self._scene_manager.prepare_scene(self._video_service,self._character_storage,self._script)

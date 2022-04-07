@@ -34,20 +34,21 @@ START_GROUP = "start"
 GAME_OVER_GROUP = "over"
 SCORE_GROUP = "score"
 LIFE_BANNER_GROUP = "lifeBanner"
+WIN_GROUP = "win"
 #script actions
 OUTPUT = "output"
 INPUT = "input"
 UPDATE = "update"
 RESTART = "restart"
 GAME_OVER = "gameOver"
-
+WINNER = "winner"
 #texts
 SCORE_TEXT = "Player score:"
 LIFE_TEXT = "Life:"
 START_TEXT = "Ready to play pakman?!! press enter and have fun."
 INSTRUCTION_TEXT = "Remeber to get as much coins as possible"
 GAME_OVER_TEXT = "Game over!! to try again press enter"
-
+WIN_TEXT = "You Win ! ! ! thanks for playing"
 #characters
 #PACMAN = "#$%"
 PACMAN = "#0%"
