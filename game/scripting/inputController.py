@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 from constants import *
 from game.scripting.action import Action
 from game.services.keyboard import KeyboardService
@@ -9,16 +10,19 @@ class InputController(Action):
         self._char_storage = charStorage
         self._is_playing = False
         
-    def execute(self,isPlaying):
+    def execute(self,isPlaying,isGameOver=False):
         
         if isPlaying:
             pacman = self._char_storage.get_character(PACMAN_GROUP)[0]
             self.set_direction(pacman)
-        else:
+        
+        if not isPlaying and not isGameOver:
             if self._keyboard_service.get_key_pressed() == 257:
-                self._is_playing = True
-            
-    
+                return True
+        elif not isPlaying and isGameOver:
+            if self._keyboard_service.get_key_pressed() == 257:
+                return RESTART
+
     def set_game_state(self, state):
         self._is_playing = state
 

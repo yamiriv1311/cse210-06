@@ -1,6 +1,4 @@
-import imp
 import pyray
-import constants
 
 class VideoServices:
     """ This is in charge of the displaying of the game """

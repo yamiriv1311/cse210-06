@@ -33,10 +33,13 @@ LIFE_GROUP = "life"
 START_GROUP = "start"
 GAME_OVER_GROUP = "over"
 SCORE_GROUP = "score"
+LIFE_BANNER_GROUP = "lifeBanner"
 #script actions
 OUTPUT = "output"
 INPUT = "input"
 UPDATE = "update"
+RESTART = "restart"
+GAME_OVER = "gameOver"
 
 #texts
 SCORE_TEXT = "Player score:"
@@ -55,3 +58,7 @@ COIN = "°"
 #coin
 COIN_VALUE = 10
 LIVES_NUM = 3
+
+#life
+LIFE_NUMBER = 6
+

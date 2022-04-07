@@ -9,6 +9,7 @@ from game.characters.banner import Banner
 from game.characters.phantom import Phantom
 from game.characters.coin import Coin
 from game.characters.score import Score
+from game.characters.life import Life
 
 class SceneManager():
     def __init__(self):
@@ -57,10 +58,13 @@ class SceneManager():
         self.__prepare_score_banner()
 
         #prepare life
-        self.__prepare_lives()
+        self.__prepare_lives_banner()
 
         #prepare score
         self.__prepare_score()
+
+        #prepare player lives
+        self.__prepare_lives()
 
         with open(LEVEL_FILE,'r') as file:
             reader = csv.reader(file)
@@ -111,13 +115,13 @@ class SceneManager():
             coin.set_coin_value(COIN_VALUE)
             self.__add_to_char_storage(COIN_GROUP,coin)
 
-    def __prepare_lives(self):
-        lifeBanner = Banner(int((WIDTH/2) + (WIDTH/4)) ,0,FONT_SIZE,WHITE,LIFE_GROUP)
+    def __prepare_lives_banner(self):
+        lifeBanner = Banner(int((WIDTH/2) + (WIDTH/4)) ,0,FONT_SIZE,WHITE,LIFE_BANNER_GROUP)
         lifeBanner.set_text(LIFE_TEXT+" "+str(LIVES_NUM))
-        self.__add_new_lives(lifeBanner)
+        self.__add_new_lives_banner(lifeBanner)
 
-    def __add_new_lives(self,livesBanner):
-        self._char_storage.add_new_character(LIFE_GROUP,livesBanner)
+    def __add_new_lives_banner(self,livesBanner):
+        self._char_storage.add_new_character(LIFE_BANNER_GROUP,livesBanner)
     
     def __prepare_start_game_menu(self):
         startBanner = Banner(int((WIDTH/2) - (WIDTH/3)) - (CELL_SIZE *3) ,int(HEIGHT/3),FONT_SIZE,WHITE,START_GROUP)
@@ -137,8 +141,12 @@ class SceneManager():
     def __prepare_game_over(self):
         banner = Banner(int((WIDTH/2) - (WIDTH/3)) - (CELL_SIZE *3) ,int(HEIGHT/3),FONT_SIZE,WHITE,GAME_OVER_GROUP)
         banner.set_text(GAME_OVER_TEXT)
-        self.__add_start_banner(banner)
+        self._char_storage.add_new_character(GAME_OVER_GROUP,banner)
 
     def __prepare_score(self):
         score = Score(0,SCORE_GROUP)
         self._char_storage.add_new_character(SCORE_GROUP,score)
+
+    def __prepare_lives(self):
+        life = Life(LIFE_NUMBER,LIFE_GROUP)
+        self._char_storage.add_new_character(LIFE_GROUP,life)

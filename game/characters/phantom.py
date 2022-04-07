@@ -8,8 +8,8 @@ class Phantom(Character,GameItem):
         self._group_name = groupName
         self._direction = ""
 
-    def passing_over_item(self, over=False):
-        return super().passing_over_item(over)
+    def passing_over_item(self):
+        return 1
     
     def get_group_name(self):
         return self._group_name
