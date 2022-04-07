@@ -5,7 +5,7 @@ Final Proyect: Pakman
 Pakman is a game based in the famus old game pacman. The player needs to collect the coins while avoiding the phantoms
 
 # Rules
-There's only one rule, DO NOT Touch the phantoms.. Good luck !!
+There's only one rule, DO NOT Touch the phantoms.. Good luck !
 
 ## Getting Started
 ---
